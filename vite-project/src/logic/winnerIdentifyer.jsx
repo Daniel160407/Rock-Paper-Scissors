@@ -1,40 +1,58 @@
-function WinnerIdentifyer(userItem,computerItem){
-    if(userItem==="scissors"&&computerItem==="rock"){
-        return(
+function WinnerIdentifyer(userItem, computerItem) {
+    const displayResults = (
+        <div id="choiceDiv">
             <div>
-                <h1>You loss!</h1>
+                <h1>Your Choice:</h1>
+                <img className="messageImg" src={`images/${userItem}.png`} />
             </div>
-        );   
-    }else if(userItem==="rock"&&computerItem==="scissors"){
-        return(
             <div>
-                <h1>You won!</h1>
+                <h1>Computer's Choice:</h1>
+                <img className="messageImg" src={`images/${computerItem}.png`} />
             </div>
-        );  
-    }else if(userItem==="paper"&&computerItem==="scissors"){
-        return(
+        </div>
+    );
+
+    const winMessage = (
+        <div>
+            {displayResults}
             <div>
-                <h1>You loss!</h1>
+                <h1 className="winMessage">You win!</h1>
             </div>
-        ); 
-    }else if(userItem==="scissors"&&computerItem==="paper"){
-        return(
+        </div>
+    );
+
+    const loseMessage = (
+        <div>
+            {displayResults}
             <div>
-                <h1>You won!</h1>
+                <h1 className="winMessage">You lose!</h1>
             </div>
-        );  
-    }else if(userItem==="rock"&&computerItem==="paper"){
-        return(
+        </div>
+    );
+
+    const drawMessage = (
+        <div>
+            {displayResults}
             <div>
-                <h1>You loss!</h1>
+                <h1 className="drawMessage">It's a draw!</h1>
             </div>
-        ); 
-    }else if(userItem==="paper"&&computerItem==="rock"){
-        return(
-            <div>
-                <h1>You won!</h1>
-            </div>
-        );  
+        </div>
+    );
+
+    if (userItem === "scissors" && computerItem === "rock") {
+        return loseMessage;
+    } else if (userItem === "rock" && computerItem === "scissors") {
+        return winMessage;
+    } else if (userItem === "paper" && computerItem === "scissors") {
+        return loseMessage;
+    } else if (userItem === "scissors" && computerItem === "paper") {
+        return winMessage;
+    } else if (userItem === "rock" && computerItem === "paper") {
+        return loseMessage;
+    } else if (userItem === "paper" && computerItem === "rock") {
+        return winMessage;
+    } else {
+        return drawMessage;
     }
 }
 
