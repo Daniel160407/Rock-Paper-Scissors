@@ -39,19 +39,31 @@ function WinnerIdentifyer(userItem, computerItem) {
         </div>
     );
 
-    if (userItem === "scissors" && computerItem === "rock") {
-        return loseMessage;
-    } else if (userItem === "rock" && computerItem === "scissors") {
+    const outcomes={
+        "rock": {
+            "rock": "draw",
+            "paper":  "lose",
+            "scissors": "win"
+        },
+        "paper":{
+            "rock": "win",
+            "paper": "draw",
+            "scissors": "lose"
+        },
+        "scissors":{
+            "rock": "lose",
+            "paper": "win",
+            "scissors": "draw"
+        }
+    };
+
+    const outcome=outcomes[userItem][computerItem];
+    
+    if(outcome==="win"){
         return winMessage;
-    } else if (userItem === "paper" && computerItem === "scissors") {
+    }else if(outcome==="lose"){
         return loseMessage;
-    } else if (userItem === "scissors" && computerItem === "paper") {
-        return winMessage;
-    } else if (userItem === "rock" && computerItem === "paper") {
-        return loseMessage;
-    } else if (userItem === "paper" && computerItem === "rock") {
-        return winMessage;
-    } else {
+    }else{
         return drawMessage;
     }
 }
