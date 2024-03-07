@@ -1,6 +1,7 @@
+import React from 'react';
 function WinnerIdentifyer(userItem, computerItem) {
     const displayResults = (
-        <div id="choiceDiv">
+        <div id='choiceDiv'>
             <div>
                 <h1>Your Choice:</h1>
                 <img className="messageImg" src={`images/${userItem}.png`} />
